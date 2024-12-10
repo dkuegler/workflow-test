@@ -1,0 +1,22 @@
+# Test workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      example:
+        name: example
+        description: test thing
+        type: string
+  pull_request:
+  issue_comment:
+        
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo github object
+        shell: bash
+        run: echo "${{ toJSON(github) }}"
+      - name: echo inputs
+        shell: bash
+        run: echo "${{ toJSON(inputs) }}"
