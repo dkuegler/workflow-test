@@ -1,5 +1,5 @@
 # Test workflow
-name: Test workflow
+name: Test workflow (labeled)
 
 on:
   workflow_dispatch:
@@ -9,6 +9,7 @@ on:
         description: test thing
         type: string
   pull_request:
+    type: labeled
   issue_comment:
         
 jobs:
@@ -21,3 +22,6 @@ jobs:
       - name: echo inputs
         shell: bash
         run: echo "${{ toJSON(inputs) }}"
+      - name: labeled
+        shell: bash
+        run: echo "labeled"
