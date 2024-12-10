@@ -9,7 +9,7 @@ on:
         description: test thing
         type: string
   pull_request:
-    type: [labeled, unlabeled]
+    types: [labeled, unlabeled]
   issue_comment:
         
 jobs:
