@@ -31,3 +31,30 @@ jobs:
       - name: labeled
         shell: bash
         run: echo "labeled"
+      - name: get collaborator status
+        shell: bash
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/dkuegler/workflow-test/collaborators/sRassmann
+          echo "dkuegler:"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/Deep-MI/FastSurfer/collaborators/dkuegler
+          echo "m-reuter:"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/Deep-MI/FastSurfer/collaborators/m-reuter
+          echo "emadRad:"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/Deep-MI/FastSurfer/collaborators/emadRad
+          echo "missing:"
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/dkuegler/workflow-test/collaborators/oidjgusghishltiu
