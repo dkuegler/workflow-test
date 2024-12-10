@@ -18,10 +18,16 @@ jobs:
     steps:
       - name: echo github object
         shell: bash
-        run: echo "${{ toJSON(github) }}"
+        run: |
+          cat <<EOF
+          ${{ toJSON(github) }}
+          EOF
       - name: echo inputs
         shell: bash
-        run: echo "${{ toJSON(inputs) }}"
+        run: |
+          cat <<EOF
+          ${{ toJSON(inputs) }}
+          EOF
       - name: labeled
         shell: bash
         run: echo "labeled"
