@@ -11,7 +11,7 @@ on:
   pull_request:
     types: [labeled, unlabeled]
   issue_comment:
-        
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -36,27 +36,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/collaborators/sRassmann
-          echo "dkuegler:"
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/collaborators/dkuegler
-          echo "m-reuter:"
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/collaborators/m-reuter
-          echo "emadRad:"
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/collaborators/emadRad
-          echo "missing:"
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/${{ github.repository }}/collaborators/oidjgusghishltiu
+          for user in sRassmann dkuegler m-reuter;
+          do
+            if gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              /repos/${{ github.repository }}/collaborators/sRassmann
+            then
+              echo "user $user: true"
+             else
+              echo "user $user: false"
+            fi
+          done
