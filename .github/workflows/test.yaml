@@ -36,7 +36,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for user in sRassmann dkuegler m-reuter;
+          for user in sRassmann dkuegler m-reuter kdiers;
           do
             if gh api \
               -H "Accept: application/vnd.github+json" \
