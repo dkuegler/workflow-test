@@ -15,4 +15,3 @@ jobs:
         run: |
           echo "${{ github }}"
           echo "${{ job }}"
-          echo "${{ jobs }}"
