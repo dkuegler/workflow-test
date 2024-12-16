@@ -1,0 +1,18 @@
+
+on:
+  workflow_run:
+    types:
+      - requested
+    workflows:
+      - test
+
+jobs:
+  echo:
+    name: write context info
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo "${{ github }}"
+          echo "${{ job }}"
+          echo "${{ jobs }}"
